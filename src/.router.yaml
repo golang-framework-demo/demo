@@ -1,0 +1,5 @@
+route:
+  Tag:
+    Demo: &demo golang_framework_demo
+  Rel:
+    *demo: "s_demo"

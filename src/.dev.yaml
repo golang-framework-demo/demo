@@ -1,0 +1,9 @@
+Common:
+  Name: "golang mvc framework demo" # Project Name {项目名称}
+  Port: "8577"                      # Port {端口}
+  TimeLocation: "Asia/Shanghai"     # Time Zone {时区}
+  Addr: ""
+  Hssl:
+    Power: 0
+    CertFile: ""
+    KeysFile: ""
