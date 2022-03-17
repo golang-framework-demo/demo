@@ -26,6 +26,15 @@ func (ad *autoload) mvcInitializedRouter() (*routes.AHC, *routes.M) {
 				Middleware: &routes.AHC{},
 				Adapter: map[*routes.I]*routes.AHC{
 					routes.Ai("{_}"): {demo.TestDemo},
+
+					// http://127.0.0.1:8577/s_demo/_demo
+					routes.Ai("_demo"): {demo.Demo},
+					// http://127.0.0.1:8577/s_demo/_demo_all
+					routes.Ai("_demo_all"): {demo.DemoAll},
+					// http://127.0.0.1:8577/s_demo/_demo_details
+					routes.Ai("_demo_details"): {demo.DemoDetails},
+					// http://127.0.0.1:8577/s_demo/_demo_d
+					routes.Ai("_demo_d"): {demo.DemoD},
 				},
 			},
 		}

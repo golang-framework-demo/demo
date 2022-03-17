@@ -7,3 +7,22 @@ Common:
     Power: 0
     CertFile: ""
     KeysFile: ""
+
+db:
+  requirement:
+    - Driver: "mysql"
+      MaxOpen: 50
+      MaxIdle: 100
+      MaxLifeTime: 60
+      ShowedSQL: true
+      CachedSQL: false
+      Expire: 0
+      MaxElementSize: 1000
+      TimeLoaction: "Asia/Shanghai"
+  conns:
+    - Require: 0
+      Repo: "demo"
+      Host: "127.0.0.1"
+      Port: 3306
+      Username: "root"
+      Password: "root"

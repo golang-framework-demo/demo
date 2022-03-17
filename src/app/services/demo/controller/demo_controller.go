@@ -34,5 +34,34 @@ func (c *DemoController) TestDemo(ctx *gin.Context) {
 		),
 	})
 	ctx.Abort()
+
+	return
+}
+
+func (c *DemoController) Demo(ctx *gin.Context) {
+	ctx.JSON(storage.StatusOK, c.src.GetDemo())
+	ctx.Abort()
+
+	return
+}
+
+func (c *DemoController) DemoAll(ctx *gin.Context) {
+	ctx.JSON(storage.StatusOK, c.src.GetDemoAll())
+	ctx.Abort()
+
+	return
+}
+
+func (c *DemoController) DemoDetails(ctx *gin.Context) {
+	ctx.JSON(storage.StatusOK, c.src.GetDemoDetails())
+	ctx.Abort()
+
+	return
+}
+
+func (c *DemoController) DemoD(ctx *gin.Context) {
+	ctx.JSON(storage.StatusOK, c.src.GetDd())
+	ctx.Abort()
+
 	return
 }
