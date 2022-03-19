@@ -36,6 +36,8 @@ func (ad *autoload) mvcInitializedRouter() (*routes.AHC, *routes.M) {
 					routes.AiGET("_demo"): {demo.Demo},
 					// http://127.0.0.1:8577/s_demo/_demo_all
 					routes.AiGET("_demo_all"): {demo.DemoAll},
+					// http://127.0.0.1:8577/s_demo/_demo_paginator?page=2&size=2
+					routes.AiGET("_demo_paginator"): {demo.DemoPaginator},
 					// http://127.0.0.1:8577/s_demo/_demo_details
 					routes.AiGET("_demo_details"): {demo.DemoDetails},
 					// http://127.0.0.1:8577/s_demo/_demo_d

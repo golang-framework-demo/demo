@@ -9,6 +9,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-framework/mvc/storage"
+	"github.com/spf13/cast"
 	"src/app/modules/demo/service"
 	store "src/storage"
 )
@@ -61,6 +62,18 @@ func (c *DemoController) Demo(ctx *gin.Context) {
 
 func (c *DemoController) DemoAll(ctx *gin.Context) {
 	ctx.JSON(storage.StatusOK, c.src.GetDemoAll())
+	ctx.Abort()
+
+	return
+}
+
+func (c *DemoController) DemoPaginator(ctx *gin.Context) {
+	page := ctx.DefaultQuery("page", "1")
+	size := ctx.DefaultQuery("size", "1")
+
+	fmt.Println(page, size)
+
+	ctx.JSON(storage.StatusOK, c.src.GetDemoPaginator(cast.ToInt(page), cast.ToInt(size)))
 	ctx.Abort()
 
 	return

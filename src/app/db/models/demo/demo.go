@@ -19,6 +19,10 @@ func NewDemoModel() *DemoModel {
 	}
 }
 
+func (m *DemoModel) NumDemo() (int64, error) {
+	return m.mod.Count(&storage.Conditions{}, &Demo{})
+}
+
 func (m *DemoModel) GetDemo(conditions *storage.Conditions) (*Demo, error) {
 	conditions.Types = storage.SelectOne
 
