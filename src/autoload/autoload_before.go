@@ -27,6 +27,10 @@ func (ad *autoload) mvcInitializedRouter() (*routes.AHC, *routes.M) {
 				Adapter: map[*routes.I]*routes.AHC{
 					routes.Ai("{_}"): {demo.TestDemo},
 
+					// http://127.0.0.1:8577/s_demo/_demo_set
+					routes.Ai("_demo_set"): {demo.SetRedisDemo},
+					// http://127.0.0.1:8577/s_demo/_demo_get
+					routes.Ai("_demo_get"): {demo.GetRedisDemo},
 					// http://127.0.0.1:8577/s_demo/_demo
 					routes.Ai("_demo"): {demo.Demo},
 					// http://127.0.0.1:8577/s_demo/_demo_all

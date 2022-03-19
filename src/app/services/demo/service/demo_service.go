@@ -5,6 +5,7 @@
 package service
 
 import (
+	"github.com/golang-framework/mvc/src/components/caches/redis"
 	"github.com/golang-framework/mvc/storage"
 	"src/app/db/models/demo"
 	s "src/storage"
@@ -22,6 +23,44 @@ func NewDemoService() *DemoService {
 
 func (srv *DemoService) Demo() string {
 	return "demo_service"
+}
+
+func (srv *DemoService) SetRedisDemo() *storage.Tpl {
+	res := storage.FwTpl(s.Ed(s.KeyDemo10001))
+
+	r := redis.New(0)
+	r.SetPrefix("golang-framework-demo")
+
+	_, errRedisSetDemo := r.Set("redis_demo", "test redis demo success!")
+	if errRedisSetDemo != nil {
+		res.Status = storage.StatusUnknown
+		res.Msg = errRedisSetDemo.Error()
+
+		return res
+	}
+
+	return res
+}
+
+func (srv *DemoService) GetRedisDemo() *storage.Tpl {
+	res := storage.FwTpl(s.Ed(s.KeyDemo10001))
+
+	r := redis.New(0)
+	r.SetPrefix("golang-framework-demo")
+
+	o, errRedisGetDemo := r.Get("redis_demo")
+	if errRedisGetDemo != nil {
+		res.Status = storage.StatusUnknown
+		res.Msg = errRedisGetDemo.Error()
+
+		return res
+	}
+
+	res.Res = &storage.Y{
+		"redis_demo": o,
+	}
+
+	return res
 }
 
 func (srv *DemoService) GetDemo() *storage.Tpl {

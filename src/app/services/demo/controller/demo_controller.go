@@ -38,6 +38,20 @@ func (c *DemoController) TestDemo(ctx *gin.Context) {
 	return
 }
 
+func (c *DemoController) SetRedisDemo(ctx *gin.Context) {
+	ctx.JSON(storage.StatusOK, c.src.SetRedisDemo())
+	ctx.Abort()
+
+	return
+}
+
+func (c *DemoController) GetRedisDemo(ctx *gin.Context) {
+	ctx.JSON(storage.StatusOK, c.src.GetRedisDemo())
+	ctx.Abort()
+
+	return
+}
+
 func (c *DemoController) Demo(ctx *gin.Context) {
 	ctx.JSON(storage.StatusOK, c.src.GetDemo())
 	ctx.Abort()

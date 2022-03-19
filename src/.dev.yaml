@@ -26,3 +26,12 @@ db:
       Port: 3306
       Username: "root"
       Password: "root"
+
+
+redis:
+  - Network: "tcp"
+    Addr: "127.0.0.1:6379"
+    Username: "root"
+    Password: ""
+    DB: 0
+    PoolSize: 20
