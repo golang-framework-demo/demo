@@ -9,7 +9,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-framework/mvc/storage"
-	"src/app/services/demo/service"
+	"src/app/modules/demo/service"
 	store "src/storage"
 )
 
