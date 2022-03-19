@@ -5,8 +5,6 @@
 package service
 
 import (
-	"fmt"
-
 	"github.com/golang-framework/mvc/src/components/caches/redis"
 	"github.com/golang-framework/mvc/src/service"
 	"github.com/golang-framework/mvc/storage"
@@ -126,11 +124,17 @@ func (srv DemoService) GetDemoPaginator(page, size int) *storage.Tpl {
 		return res
 	}
 
-	fmt.Println(srv.demoDB.NumDemo())
+	nums, errDemoNums := srv.demoDB.NumDemo()
+	if errDemoNums != nil {
+		res.Status = storage.StatusUnknown
+		res.Msg = errDemoNums.Error()
+
+		return res
+	}
 
 	res.Res = &storage.Y{
 		"demo":      d,
-		"paginator": srv.parent.Paginator(page, 10, size),
+		"paginator": srv.parent.Paginator(page, int(nums), size),
 	}
 
 	return res

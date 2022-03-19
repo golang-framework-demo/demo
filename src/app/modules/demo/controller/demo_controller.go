@@ -71,8 +71,6 @@ func (c *DemoController) DemoPaginator(ctx *gin.Context) {
 	page := ctx.DefaultQuery("page", "1")
 	size := ctx.DefaultQuery("size", "1")
 
-	fmt.Println(page, size)
-
 	ctx.JSON(storage.StatusOK, c.src.GetDemoPaginator(cast.ToInt(page), cast.ToInt(size)))
 	ctx.Abort()
 
