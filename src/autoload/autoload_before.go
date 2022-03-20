@@ -17,7 +17,8 @@ func (ad *autoload) before() {
 
 func (ad *autoload) mvcInitializedRouter() (*routes.AHC, *routes.M) {
 	var (
-		demo = controller.NewDemoController()
+		demo        = controller.NewDemoController()
+		translation = controller.NewTranslationController()
 	)
 
 	return &routes.AHC{middleware.NoRouter(), middleware.NoMethod()},
@@ -42,6 +43,9 @@ func (ad *autoload) mvcInitializedRouter() (*routes.AHC, *routes.M) {
 					routes.AiGET("_demo_details"): {demo.DemoDetails},
 					// http://127.0.0.1:8577/s_demo/_demo_d
 					routes.AiGET("_demo_d"): {demo.DemoD},
+
+					// http://127.0.0.1:8577/s_demo/_translations
+					routes.AiGET("_translation"): {translation.T},
 				},
 			},
 		}

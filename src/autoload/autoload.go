@@ -22,6 +22,9 @@ func (ad *autoload) src(fw *mvc.Framework) {
 	fw.Err = &err.M{EMsg: storage.Em}
 	fw.Fw()
 
+	// initialized Translation
+	fw.FwTranslation(storage.Tm)
+
 	// initialized router
 	fw.Route.E, fw.Route.M = ad.mvcInitializedRouter()
 	fw.FwRouter()

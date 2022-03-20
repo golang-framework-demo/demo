@@ -11,7 +11,7 @@ import (
 	"github.com/golang-framework/mvc/storage"
 	"github.com/spf13/cast"
 	"src/app/modules/demo/service"
-	store "src/storage"
+	s "src/storage"
 )
 
 type DemoController struct {
@@ -30,8 +30,8 @@ func (c *DemoController) TestDemo(ctx *gin.Context) {
 		"service": c.src.Demo(),
 		"error": fmt.Sprintf(
 			"%v: %v",
-			store.Nd(store.KeyDemo10001),
-			store.Ed(store.KeyDemo10001),
+			s.Nd(s.KeyDemo10001),
+			s.Ed(s.KeyDemo10001),
 		),
 	})
 	ctx.Abort()
