@@ -17,6 +17,7 @@ func (ad *autoload) before() {
 
 func (ad *autoload) mvcInitializedRouter() (*routes.AHC, *routes.M) {
 	var (
+		demoMw      = middleware.NewMDemo()
 		demo        = controller.NewDemoController()
 		translation = controller.NewTranslationController()
 	)
@@ -44,8 +45,11 @@ func (ad *autoload) mvcInitializedRouter() (*routes.AHC, *routes.M) {
 					// http://127.0.0.1:8577/s_demo/_demo_d
 					routes.AiGET("_demo_d"): {demo.DemoD},
 
-					// http://127.0.0.1:8577/s_demo/_translations
-					routes.AiGET("_translation"): {translation.T},
+					// http://127.0.0.1:8577/s_demo/_translation?ln=cn
+					routes.AiGET("_translation"): {
+						demoMw.InitializedLanguage(),
+						translation.T,
+					},
 				},
 			},
 		}

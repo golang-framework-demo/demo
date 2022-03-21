@@ -22,8 +22,8 @@ func (c *TranslationController) T(ctx *gin.Context) {
 	res := storage.FwTpl(s.Ed(s.KeyDemo10001))
 
 	res.Res = &storage.Y{
-		"中文": languages.T("TEST_T_1", storage.CN),
-		"英文": languages.T("TEST_T_1", storage.EN),
+		"1": languages.T("TEST_T_1"),
+		"2": languages.T("TEST_T_2"),
 	}
 
 	ctx.JSON(storage.StatusOK, res)
