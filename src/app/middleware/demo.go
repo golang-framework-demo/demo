@@ -18,7 +18,7 @@ func NewMDemo() *MDemo {
 
 func (_ *MDemo) InitializedLanguage() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		switch ctx.Query("ln") {
+		switch ctx.Query("language") {
 		case "cn":
 			storage.CurrentLanguage = storage.CN
 			break

@@ -45,7 +45,7 @@ func (ad *autoload) mvcInitializedRouter() (*routes.AHC, *routes.M) {
 					// http://127.0.0.1:8577/s_demo/_demo_d
 					routes.AiGET("_demo_d"): {demo.DemoD},
 
-					// http://127.0.0.1:8577/s_demo/_translation?ln=cn
+					// http://127.0.0.1:8577/s_demo/_translation?language=cn
 					routes.AiGET("_translation"): {
 						demoMw.InitializedLanguage(),
 						translation.T,

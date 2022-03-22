@@ -8,6 +8,7 @@ import (
 	"github.com/golang-framework/mvc"
 	err "github.com/golang-framework/mvc/modules/error"
 	"src/storage"
+	"src/storage/language"
 )
 
 type autoload struct {
@@ -23,7 +24,7 @@ func (ad *autoload) src(fw *mvc.Framework) {
 	fw.Fw()
 
 	// initialized Translation
-	fw.FwTranslation(storage.Tm)
+	fw.FwTranslation(language.Tm)
 
 	// initialized router
 	fw.Route.E, fw.Route.M = ad.mvcInitializedRouter()
