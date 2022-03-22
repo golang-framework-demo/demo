@@ -24,6 +24,7 @@ func (c *TranslationController) T(ctx *gin.Context) {
 	res.Res = &storage.Y{
 		"1": languages.T("TEST_T_1"),
 		"2": languages.T("TEST_T_2"),
+		"3": languages.T("TEST_T_3", "replace", "success"),
 	}
 
 	ctx.JSON(storage.StatusOK, res)

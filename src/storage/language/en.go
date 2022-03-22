@@ -11,4 +11,5 @@ import (
 var en = &storage.Y{
 	"TEST_T_1": "test success 1",
 	"TEST_T_2": "test success 2",
+	"TEST_T_3": "test success 3 %v:%v",
 }
