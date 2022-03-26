@@ -20,6 +20,7 @@ func (ad *autoload) mvcInitializedRouter() (*routes.AHC, *routes.M) {
 		demoMw      = middleware.NewMDemo()
 		demo        = controller.NewDemoController()
 		translation = controller.NewTranslationController()
+		crypto      = controller.NewCryptoController()
 	)
 
 	return &routes.AHC{middleware.NoRouter(), middleware.NoMethod()},
@@ -50,6 +51,15 @@ func (ad *autoload) mvcInitializedRouter() (*routes.AHC, *routes.M) {
 						demoMw.InitializedLanguage(),
 						translation.T,
 					},
+
+					// http://127.0.0.1:8577/s_demo/_crypto_md5
+					routes.AiGET("_crypto_md5"): {crypto.MD5},
+					// http://127.0.0.1:8577/s_demo/_crypto_sha1
+					routes.AiGET("_crypto_sha1"): {crypto.SHA1},
+					// http://127.0.0.1:8577/s_demo/_crypto_sha256
+					routes.AiGET("_crypto_sha256"): {crypto.SHA256},
+					// http://127.0.0.1:8577/s_demo/_crypto_hmac
+					routes.AiGET("_crypto_hmac"): {crypto.HMAC},
 				},
 			},
 		}
