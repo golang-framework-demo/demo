@@ -47,3 +47,17 @@ func (c *CryptoController) HMAC(ctx *gin.Context) {
 
 	return
 }
+
+func (c *CryptoController) AesEncode(ctx *gin.Context) {
+	ctx.JSON(storage.StatusOK, c.srv.AesEncode("test success"))
+	ctx.Abort()
+
+	return
+}
+
+func (c *CryptoController) AesDecode(ctx *gin.Context) {
+	ctx.JSON(storage.StatusOK, c.srv.AesDecode(ctx.Query("aes_ciphertext")))
+	ctx.Abort()
+
+	return
+}

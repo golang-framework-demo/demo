@@ -60,6 +60,10 @@ func (ad *autoload) mvcInitializedRouter() (*routes.AHC, *routes.M) {
 					routes.AiGET("_crypto_sha256"): {crypto.SHA256},
 					// http://127.0.0.1:8577/s_demo/_crypto_hmac
 					routes.AiGET("_crypto_hmac"): {crypto.HMAC},
+					// http://127.0.0.1:8577/s_demo/_crypto_encode
+					routes.AiGET("_crypto_aes_encode"): {crypto.AesEncode},
+					// http://127.0.0.1:8577/s_demo/_crypto_decode?aes_ciphertext=xxx
+					routes.AiGET("_crypto_aes_decode"): {crypto.AesDecode},
 				},
 			},
 		}

@@ -117,3 +117,67 @@ func (srv *CryptoService) HMAC(d string) *storage.Tpl {
 
 	return res
 }
+
+func (srv *CryptoService) AesEncode(d string) *storage.Tpl {
+	res := storage.FwTpl(s.Ed(s.KeyDemo10001))
+
+	cry := crypto.New()
+	cry.Mode = storage.Aes
+	cry.D = []interface{}{
+		"o123456o", //  密钥
+	}
+
+	engine, errAesEngine := cry.Engine()
+	if errAesEngine != nil {
+		res.Status = storage.StatusUnknown
+		res.Msg = errAesEngine.Error()
+
+		return res
+	}
+
+	aesEncode, errAesEncode := engine.(*crypto.Aes).Encrypt(d)
+	if errAesEncode != nil {
+		res.Status = storage.StatusUnknown
+		res.Msg = errAesEncode.Error()
+
+		return res
+	}
+
+	res.Res = &storage.Y{
+		"AES_Encode": aesEncode,
+	}
+
+	return res
+}
+
+func (srv *CryptoService) AesDecode(d string) *storage.Tpl {
+	res := storage.FwTpl(s.Ed(s.KeyDemo10001))
+
+	cry := crypto.New()
+	cry.Mode = storage.Aes
+	cry.D = []interface{}{
+		"o123456o", //  密钥
+	}
+
+	engine, errAesEngine := cry.Engine()
+	if errAesEngine != nil {
+		res.Status = storage.StatusUnknown
+		res.Msg = errAesEngine.Error()
+
+		return res
+	}
+
+	aesEncode, errAesEncode := engine.(*crypto.Aes).Decrypt(d)
+	if errAesEncode != nil {
+		res.Status = storage.StatusUnknown
+		res.Msg = errAesEncode.Error()
+
+		return res
+	}
+
+	res.Res = &storage.Y{
+		"AES_Decode": aesEncode,
+	}
+
+	return res
+}
