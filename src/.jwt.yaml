@@ -1,0 +1,14 @@
+JWTTitle:
+  DemoJWT: &demo_jwt DemoJWT
+
+JWTSignature:
+  DemoSignature: &demo_signature o123*456o
+
+JWT:
+  *demo_jwt:
+    SIG: *demo_signature
+    TYP: "jwt_token"
+    ALG: "md5"
+    ISS: "jwt_demo"
+    SUB: "jwt_demo_subtitle"
+    AUD: "jwt_demo_aud"
